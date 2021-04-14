@@ -3,7 +3,7 @@ package ar.edu.unahur.obj2.vendedores
 class CentroDeDistribucion(val ciudadEnLaQueEsta: Ciudad){
     val vendedores= mutableListOf<Vendedor>()
     fun agregarVendedores(vendedor: Vendedor) {
-        check(vendedores.contains(vendedor)) { "ya esta este vendedor" }
+        check(!vendedores.contains(vendedor)) { "ya esta este vendedor" }
         vendedores.add(vendedor)
     }
 
@@ -17,7 +17,7 @@ class CentroDeDistribucion(val ciudadEnLaQueEsta: Ciudad){
     }
 
     fun vendedoresGenericos(): List<Vendedor> {
-        return vendedores.filter { v -> v.tieneAlMenosUnaCertificacionQueNoEsSobreProductos() }
+        return vendedores.filter { v -> v.esGenerico() }
     }
 
     fun esRobusto(): Boolean {

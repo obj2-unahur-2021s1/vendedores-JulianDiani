@@ -57,11 +57,11 @@ class VendedorTest: DescribeSpec({
 class CentroDistribucionTest: DescribeSpec({
     val buenosaires=Provincia(poblacion = 500000000)
     val bsas=Ciudad(provincia = buenosaires)
+    val centro = CentroDeDistribucion(ciudadEnLaQueEsta = bsas)
     describe("centroDistribuNoPuedeAgregar") {
         val jorge = VendedorFijo(ciudadEnLaQueVive = bsas)
         val pepe=VendedorFijo(ciudadEnLaQueVive = bsas)
-        val centro = CentroDeDistribucion(ciudadEnLaQueEsta = bsas)
-        val vendedores= mutableListOf(jorge)
+        centro.agregarVendedores(jorge)
         it("nopermiteagregar") {
             shouldThrowAny {
                 centro.agregarVendedores(jorge)

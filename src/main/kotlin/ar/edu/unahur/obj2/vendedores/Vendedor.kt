@@ -28,7 +28,7 @@ abstract class Vendedor {
   fun otrasCertificaciones() = certificaciones.count { !it.esSobreProductos }
 
   fun puntajeCertificaciones() = certificaciones.sumBy { c -> c.puntos }
-  fun tieneAlMenosUnaCertificacionQueNoEsSobreProductos()=
+  fun esGenerico()=
     certificaciones.any({c-> c.esSobreProductos})
   fun tieneAfinidad(centro:CentroDeDistribucion): Boolean {
     return this.puedeTrabajarEn(centro.ciudadEnLaQueEsta)
